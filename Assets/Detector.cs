@@ -20,7 +20,10 @@ public class Detector : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, direction, out hit, detectionDistance))
         {
-            hit.collider.GetComponent<DetectableItem>().Interact();
+            if (hit.collider.GetComponent<DetectableItem>() != null) 
+            {
+                hit.collider.GetComponent<DetectableItem>().Interact();
+            }
         }
     }
 }

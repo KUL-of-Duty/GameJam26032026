@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Cinemachine;
+using System;
 
 public class MovementScript : MonoBehaviour
 {
@@ -7,10 +8,12 @@ public class MovementScript : MonoBehaviour
     public float mouseSensitivity = 100f;
     private float _yRotation = 0f;
     public bool _isGrounded = false;
+    float distanceToGround = 1.01f;
     private Vector3 _velocity = Vector3.zero;
     public float _gravityForce = -9.8f;
+    public float _runSpeed = 3.5f;
     void Start()
-    {  
+    {
         Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
@@ -18,9 +21,10 @@ public class MovementScript : MonoBehaviour
         movement();
     }
 
-    void movement(){
+    void movement()
+    {
         Jump();
-        if(Input.GetKeyDown(KeyCode.Space)) Debug.Log("Jump");
+        Sprint();
         float x = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float y = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -31,12 +35,37 @@ public class MovementScript : MonoBehaviour
         transform.Rotate(Vector3.up * x);
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector3 moveDirection = cm.transform.forward * move.y + cm.transform.right * move.x;
-        transform.position += moveDirection * Time.deltaTime * 5f;
+        moveDirection.y = 0; // Zapobiega poruszaniu siê w górê lub w dó³
+        Debug.Log(moveDirection);
+        transform.position += moveDirection * Time.deltaTime * (Sprint() ? _runSpeed * 2 : _runSpeed);
     }
 
-    void Jump(){
-        if(Input.GetKeyDown(KeyCode.Space) && _isGrounded) _velocity.y = Mathf.Sqrt(2f * -_gravityForce);
+    void Jump()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Space)
+        && IsGrounded())
+        {
+            _velocity.y = Mathf.Sqrt(2f * (-_gravityForce));
+            GetComponent<Rigidbody>().AddForce(_velocity, ForceMode.VelocityChange);
+            //transform.position += _velocity ;
+            Debug.Log(_velocity);
+        }
     }
-    
+
+    public bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, distanceToGround);
+    }
+
+    bool Sprint()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && IsGrounded())
+        {
+            return true;
+        }
+        return false;
+    }
+
 
 }
