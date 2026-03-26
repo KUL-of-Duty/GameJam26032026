@@ -1,7 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-public class CorridorButton : MonoBehaviour
+public class CorridorButton : DetectableItem
 {
     public GameObject player;
     public CinemachineCamera cm;
@@ -13,8 +13,9 @@ public class CorridorButton : MonoBehaviour
     {
         while(player == null) player = GameObject.FindWithTag("Player");
     }
-    void Interact()
+
+    public override void Interact()
     {
-        
+        player.transform.Rotate(0, 0, 180);
     }
 }
