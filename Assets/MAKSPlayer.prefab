@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1225856734461835046
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7792686257792730995}
-  m_Layer: 0
-  m_Name: DogSpot2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7792686257792730995
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225856734461835046}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7105804, z: -0, w: 0.7036161}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2270474574350296908}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2567353577169621679
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,37 +75,6 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!1 &6240263981637764102
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4393953875589765611}
-  m_Layer: 0
-  m_Name: DogSpot1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4393953875589765611
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6240263981637764102}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7105804, z: -0, w: 0.7036161}
-  m_LocalPosition: {x: 1, y: 0, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2270474574350296908}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8361185536482906432
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,10 +88,10 @@ GameObject:
   - component: {fileID: 787009034833906778}
   - component: {fileID: 1978981715648691310}
   - component: {fileID: 5231217671540944660}
-  - component: {fileID: 3728056874315200255}
+  - component: {fileID: -8764924141853915448}
   m_Layer: 0
-  m_Name: MAKSPlayer
-  m_TagString: Player
+  m_Name: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,8 +110,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6681577005750888302}
-  - {fileID: 4393953875589765611}
-  - {fileID: 7792686257792730995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4080512762926062200
@@ -261,26 +197,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 8361185536482906432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59aac0d97f57cf64c9c15a8ef6f07faa, type: 3}
+  m_Script: {fileID: 11500000, guid: 901696599e05c5a41abf690c04f022a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cm: {fileID: 8406764938153239419}
   mouseSensitivity: 100
-  _isGrounded: 1
-  _heightBounds: 21
-  _gravityForce: -9.8
-  controller: {fileID: 0}
---- !u!114 &3728056874315200255
-MonoBehaviour:
+  gravityForce: -9.8
+  controller: {fileID: -8764924141853915448}
+--- !u!143 &-8764924141853915448
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8361185536482906432}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fa6bec5df3d2142b84d7ed85cf8757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dogSpot: {fileID: 6240263981637764102}
-  dogSpot2: {fileID: 1225856734461835046}
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
