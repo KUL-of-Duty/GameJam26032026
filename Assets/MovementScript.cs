@@ -1,8 +1,5 @@
 using UnityEngine;
 using Unity.Cinemachine;
-using System;
-using Unity.Mathematics;
-using UnityEngine.InputSystem;
 
 public class MovementScript : MonoBehaviour
 {
@@ -12,22 +9,17 @@ public class MovementScript : MonoBehaviour
     public bool _isGrounded = false;
     private Vector3 _velocity = Vector3.zero;
     public float _gravityForce = -9.8f;
-    //public CharacterController controller;
     void Start()
     {  
-        //cm = GetComponent<CinemachineCamera>();
         Cursor.lockState = CursorLockMode.Locked;
     }
-
-    // Update is called once per frame
     void Update()
     {
         movement();
     }
 
     void movement(){
-        //_isGrounded = controller.isGrounded;
-        //Gravity();
+        Jump();
         if(Input.GetKeyDown(KeyCode.Space)) Debug.Log("Jump");
         float x = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float y = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -42,14 +34,9 @@ public class MovementScript : MonoBehaviour
         transform.position += moveDirection * Time.deltaTime * 5f;
     }
 
-    // void Gravity()
-    // {
-    //     if (_isGrounded && _velocity.y < 0) _velocity.y = 2f;
-    //     if (!_isGrounded)
-    //     {
-    //         _velocity.y -= _gravityForce * Time.deltaTime;
-    //         controller.Move(_velocity * Time.deltaTime);
-    //     }
-    // }
+    void Jump(){
+        if(Input.GetKeyDown(KeyCode.Space) && _isGrounded) _velocity.y = Mathf.Sqrt(2f * -_gravityForce);
+    }
+    
 
 }
