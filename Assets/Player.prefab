@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 787009034833906778}
   - component: {fileID: 1978981715648691310}
   - component: {fileID: 5231217671540944660}
-  - component: {fileID: -8764924141853915448}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -202,30 +201,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cm: {fileID: 8406764938153239419}
   mouseSensitivity: 100
-  gravityForce: -9.8
-  controller: {fileID: -8764924141853915448}
---- !u!143 &-8764924141853915448
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361185536482906432}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  _isGrounded: 0
+  _gravityForce: -9.8
