@@ -9,11 +9,10 @@ public class MovementScript : MonoBehaviour
     public CinemachineCamera cm;
     public float mouseSensitivity = 100f;
     private float _yRotation = 0f;
-    public bool _isGrounded = true;
+    public bool _isGrounded = false;
     private Vector3 _velocity = Vector3.zero;
-    public float _heightBounds = 21f;
     public float _gravityForce = -9.8f;
-    public CharacterController controller;
+    //public CharacterController controller;
     void Start()
     {  
         //cm = GetComponent<CinemachineCamera>();
@@ -27,9 +26,9 @@ public class MovementScript : MonoBehaviour
     }
 
     void movement(){
-        _isGrounded = controller.isGrounded;
-        Gravity();
-        if(Input.GetKeyDown(KeyCode.Space)) jump(15f);
+        //_isGrounded = controller.isGrounded;
+        //Gravity();
+        if(Input.GetKeyDown(KeyCode.Space)) Debug.Log("Jump");
         float x = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float y = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -43,18 +42,14 @@ public class MovementScript : MonoBehaviour
         transform.position += moveDirection * Time.deltaTime * 5f;
     }
 
-    private void Gravity()
-    {
-        if (_isGrounded && _velocity.y < 0) _velocity.y = -2f;
-        if (!_isGrounded && transform.position.y > _heightBounds)
-        {
-            _velocity.y += _gravityForce * Time.deltaTime;
-        }
-    }
-
-    void jump(float force){
-        if(!controller.isGrounded) return;
-        transform.position += Vector3.up * _gravityForce * Time.deltaTime;
-    }   
+    // void Gravity()
+    // {
+    //     if (_isGrounded && _velocity.y < 0) _velocity.y = 2f;
+    //     if (!_isGrounded)
+    //     {
+    //         _velocity.y -= _gravityForce * Time.deltaTime;
+    //         controller.Move(_velocity * Time.deltaTime);
+    //     }
+    // }
 
 }
