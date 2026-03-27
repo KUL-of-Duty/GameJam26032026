@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
@@ -17,7 +18,12 @@ public class PlayerScript : MonoBehaviour
     float cooldown = 1f;
 
     RaycastHit hit;
+    DogBehaviour dog;
 
+    CinemachineCamera cm;
+
+    [SerializeField]
+    LayerMask DontIgnore;
     public void AtackPlayer()
     {
         foreach (var particle in particles)
@@ -30,6 +36,11 @@ public class PlayerScript : MonoBehaviour
     private void Awake()
     {
         hitTime = Time.time;
+        cm = gameObject.GetComponentInChildren<CinemachineCamera>();
+        if(GameObject.FindWithTag("Dog") != null)
+        {
+            dog = GameObject.FindWithTag("Dog").GetComponent<DogBehaviour>();
+        }
     }
 
     void Update()
@@ -38,6 +49,19 @@ public class PlayerScript : MonoBehaviour
         {
             Atack();
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (dog == null) return;
+
+            RaycastHit hitDog;
+            if (Physics.Raycast(cm.transform.position, cm.transform.forward, out hitDog, 10000, DontIgnore))
+            {
+                dog.GoTowards(hitDog.point);
+            }
+        }
+
+
     }
 
     void Atack()
@@ -67,7 +91,5 @@ public class PlayerScript : MonoBehaviour
                 }
             }
         }
-
-        Debug.DrawRay(origin, direction * 3f, Color.red, 1f);
     }
 }

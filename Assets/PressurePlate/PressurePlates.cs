@@ -19,21 +19,10 @@ public class PressurePlates : MonoBehaviour
     {
         Dog = GameObject.FindWithTag("Dog");
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!DogPressure)
-        {
-            Dog.GetComponent<DogBehaviour>().GoToButton(DogPressurePlate);
-            DogPressure = true;
-        }
-    }
-
     public void ActivateDoors()
     {
-        if (!DogPressure) return;
-
-        Dog.GetComponent<DogBehaviour>().TaskDone();
-        Door.SetActive(true);
+        if (Vector3.Distance(DogPressurePlate.transform.position, Dog.transform.position) > 5f && Vector3.Distance(Plate.transform.position, Dog.transform.position) > 5f) return;
+        Door.SetActive(false);
         Bone.SetActive(false);
     }
 }
