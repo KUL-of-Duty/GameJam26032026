@@ -35,7 +35,7 @@ public class MovementScript : MonoBehaviour
         transform.Rotate(Vector3.up * x);
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector3 moveDirection = cm.transform.forward * move.y + cm.transform.right * move.x;
-        moveDirection.y = 0; // Zapobiega poruszaniu siê w górê lub w dó³
+        moveDirection.y = 0; // Zapobiega poruszaniu siï¿½ w gï¿½rï¿½ lub w dï¿½
         Debug.Log(moveDirection);
         transform.position += moveDirection * Time.deltaTime * (Sprint() ? _runSpeed * 2 : _runSpeed);
     }
