@@ -7146,6 +7146,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1621517958927519442, guid: 050e11e05c10eab4d94fc417a9c5ad4c, type: 3}
+      propertyPath: field of view
+      value: 82.66799
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621517958927519442, guid: 050e11e05c10eab4d94fc417a9c5ad4c, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 119
       objectReference: {fileID: 0}
@@ -9585,6 +9589,14 @@ PrefabInstance:
     - target: {fileID: 2149609702468178284, guid: 7490cbb65199baa4088ce99296c39769, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188215741200570923, guid: 7490cbb65199baa4088ce99296c39769, type: 3}
+      propertyPath: Priority.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188215741200570923, guid: 7490cbb65199baa4088ce99296c39769, type: 3}
+      propertyPath: Priority.m_Value
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6526189909191991234, guid: 7490cbb65199baa4088ce99296c39769, type: 3}
       propertyPath: m_Name

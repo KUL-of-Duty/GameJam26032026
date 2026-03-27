@@ -18,15 +18,17 @@ public class MovementScript : MonoBehaviour
     private Vector3 _velocity = Vector3.zero;
     public float _gravityForce = -9.8f;
     public float _runSpeed = 3.5f;
-    bool movementEnabled = true;
     float lastGroundCheckTime = 0f;
     float jumpInterval = 0.2f; // Czêstotliwoœæ
+    bool movementEnabled = true;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
     {
+        Debug.Log(movementEnabled);
+        if (!movementEnabled) return;
         movement();
     }
 
