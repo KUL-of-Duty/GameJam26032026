@@ -8,7 +8,8 @@ public class NumberSelector : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E)){
-            if(Physics.Raycast(cm.transform.position, transform.forward, out hit, 10f)){
+            if(Physics.Raycast(cm.transform.position, transform.forward, out hit, 100f)){
+                Debug.DrawRay(cm.transform.position, transform.forward, Color.white, 100.0f, true);
                 hit = Physics.Raycast(transform.position, transform.forward, out hit, 2f) ? hit : default;
                 Debug.Log(hit.collider != null ? hit.collider.tag : "No hit");
                 if(hit.collider==null) return;
