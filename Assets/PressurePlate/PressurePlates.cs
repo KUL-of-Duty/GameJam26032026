@@ -10,8 +10,6 @@ public class PressurePlates : MonoBehaviour
     GameObject Dog;
     [SerializeField]
     GameObject Door;
-    [SerializeField]
-    GameObject Bone;
 
     bool DogPressure = false;
 
@@ -21,8 +19,6 @@ public class PressurePlates : MonoBehaviour
     }
     public void ActivateDoors()
     {
-        if (Vector3.Distance(DogPressurePlate.transform.position, Dog.transform.position) > 3f && Vector3.Distance(Plate.transform.position, Dog.transform.position) > 3f) return;
         Door.SetActive(true);
-        Bone.SetActive(false);
     }
 }
