@@ -4,6 +4,7 @@ using System;
 
 public class MovementScript : MonoBehaviour
 {
+    [SerializeField] Animator cameraWalkCycleAnimator;
     public CinemachineCamera cm;
     public float mouseSensitivity = 100f;
     private float _yRotation = 0f;
@@ -36,8 +37,9 @@ public class MovementScript : MonoBehaviour
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector3 moveDirection = cm.transform.forward * move.y + cm.transform.right * move.x;
         moveDirection.y = 0; // Zapobiega poruszaniu siê w górê lub w dó³
-        Debug.Log(moveDirection);
         transform.position += moveDirection * Time.deltaTime * (Sprint() ? _runSpeed * 2 : _runSpeed);
+
+        cameraWalkCycleAnimator.SetBool("IsWalking", moveDirection.magnitude > 0);
     }
 
     void Jump()
@@ -49,7 +51,6 @@ public class MovementScript : MonoBehaviour
             _velocity.y = Mathf.Sqrt(2f * (-_gravityForce));
             GetComponent<Rigidbody>().AddForce(_velocity, ForceMode.VelocityChange);
             //transform.position += _velocity ;
-            Debug.Log(_velocity);
         }
     }
 

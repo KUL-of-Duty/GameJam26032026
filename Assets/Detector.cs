@@ -8,7 +8,7 @@ public class Detector : MonoBehaviour
 
     void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Input.GetMouseButtonDown(0))
         {
             PerformRaycast();
         }
