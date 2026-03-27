@@ -8,11 +8,13 @@ public class MovementScript : MonoBehaviour
     public float mouseSensitivity = 100f;
     private float _yRotation = 0f;
     public bool _isGrounded = false;
-    float distanceToGround = 1.01f;
+    float distanceToGround = 1.2f;
     private Vector3 _velocity = Vector3.zero;
     public float _gravityForce = -9.8f;
     public float _runSpeed = 3.5f;
     bool movementEnabled = true;
+    float lastGroundCheckTime = 0f;
+    float jumpInterval = 0.2f; // Częstotliwość
     void Start()
     {  
         Cursor.lockState = CursorLockMode.Locked;
@@ -23,7 +25,10 @@ public class MovementScript : MonoBehaviour
     }
 
     void movement(){
-        Jump();
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
         Sprint();
         float x = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float y = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -41,13 +46,16 @@ public class MovementScript : MonoBehaviour
 
     void Jump(){
        
-        if(Input.GetKeyDown(KeyCode.Space)
-        &&IsGrounded() ){
-            _velocity.y = Mathf.Sqrt(2f * (-_gravityForce));
+        if(IsGrounded() && Time.time - lastGroundCheckTime > jumpInterval){
+            _velocity.y = Mathf.Sqrt(2.5f * (-_gravityForce));
             GetComponent<Rigidbody>().AddForce(_velocity, ForceMode.VelocityChange); 
             //transform.position += _velocity ;
              Debug.Log(_velocity);
-            }
+            lastGroundCheckTime = Time.time;
+        }
+        else if (IsGrounded()){
+            lastGroundCheckTime = Time.time;
+        }
     }
 
     public bool IsGrounded() {
