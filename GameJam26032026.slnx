@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+﻿<Solution>
+  <Project Path="MerryYellow.CodeAssist.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+</Solution>
+=======
 ﻿<Solution>
   <Project Path="Unity.Timeline.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.csproj" />
@@ -41,3 +47,4 @@
   <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
   <Project Path="Unity.Collections.Editor.csproj" />
 </Solution>
+>>>>>>> origin/Olek_1

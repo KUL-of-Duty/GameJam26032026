@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class CorridorButton : DetectableItem
 {
+    [SerializeField] SkinnedMeshRenderer levelMesh;
+
+    public GameObject buttonColor_1 = null;
+    public GameObject buttonColor_2 = null;
+
     public GameObject player;
     [SerializeField] 
     GameObject corridors;
@@ -27,10 +32,23 @@ public class CorridorButton : DetectableItem
 
     public override void Interact()
     {
+        Debug.Log("HIDE GATES");
         ShowCorridors();
-        Vector3 currentEuler = player.transform.eulerAngles;
-        currentEuler.y = playersRotationY;
-        player.transform.eulerAngles = currentEuler;
+        buttonColor_2.SetActive(true);
+        buttonColor_1.SetActive(false);
+        //Vector3 currentEuler = player.transform.eulerAngles;
+        //currentEuler.y = playersRotationY;
+        //player.transform.eulerAngles = currentEuler;
+        levelMesh.SetBlendShapeWeight(0, 100);
+        levelMesh.SetBlendShapeWeight(1, 100);
+
+        Mesh bakeMesh = new Mesh();
+        levelMesh.BakeMesh(bakeMesh);
+
+        var collider = levelMesh.GetComponent<MeshCollider>();
+        collider.sharedMesh = bakeMesh;
+
+        player.GetComponentInChildren<DubbingPlayer>().PlayFrase("wooow", "Wow! Idê dalej!");
     }
 
     private void ShowCorridors()

@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 8af2452393a90d84496c955096fb19e8
+=======
 <<<<<<<< HEAD:Assets/Frame.prefab.meta
 guid: 264cb8b8fdf90ee42a06e0783d7d26f1
 ========
 guid: 3117699c8af4a9842b57619bd0b6315f
 >>>>>>>> origin/branch-max:Assets/Prefabs/Clock.prefab.meta
+>>>>>>> origin/Olek_1
 PrefabImporter:
   externalObjects: {}
   userData: 
