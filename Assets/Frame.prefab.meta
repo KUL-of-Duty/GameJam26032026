@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Frame.prefab.meta
 guid: 16683d78c83ec8e448a2d1560e996f88
+========
+guid: 3117699c8af4a9842b57619bd0b6315f
+>>>>>>>> origin/branch-max:Assets/Prefabs/Clock.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

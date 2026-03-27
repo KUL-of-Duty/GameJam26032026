@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/CorrectPaintingsAction.prefab.meta
 guid: 639d7ecb891b62c428509155b872b55b
+========
+guid: c2fae9b5bcb7a674da32e91cd96f9399
+>>>>>>>> origin/branch-max:Assets/Prefabs/ChoiceCorridor.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
