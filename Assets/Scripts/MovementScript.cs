@@ -21,6 +21,14 @@ public class MovementScript : MonoBehaviour
     bool movementEnabled = true;
     float lastGroundCheckTime = 0f;
     float jumpInterval = 0.2f; // Czêstotliwoœæ
+
+    public enum SphereCastOrRayCast
+    {
+        SPHERECAST, RAYCAST
+    }
+
+    public SphereCastOrRayCast sphereOrRay;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -90,7 +98,12 @@ public class MovementScript : MonoBehaviour
 
     public bool IsGrounded()
     {
-        _isGrounded = Physics.SphereCast(transform.position, 1.2f, Vector3.down, out RaycastHit hitInfo);
+        switch (sphereOrRay)
+        {
+            case SphereCastOrRayCast.RAYCAST: _isGrounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround); break;
+            case SphereCastOrRayCast.SPHERECAST: _isGrounded = Physics.SphereCast(transform.position, 1.2f, Vector3.down, out RaycastHit hitInfo); break;
+        }
+
         return _isGrounded;
     }
 
