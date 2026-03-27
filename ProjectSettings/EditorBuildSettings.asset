@@ -4,19 +4,6 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Scenes/Sceneria/1.EntranceLabyrinth.unity
-    guid: 859597d1162c6958f954357f6bbcf33d
-  - enabled: 1
-    path: Assets/Scenes/Sceneria/2.ParkVol1.unity
-    guid: 56044142a2da90c6487e78d83c7986cc
-  - enabled: 1
-    path: Assets/Scenes/Sceneria/3.Platformer.unity
-    guid: eca3b0a6cd0da360fb4b73c07f5e9fb7
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_Scenes: []
+  m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

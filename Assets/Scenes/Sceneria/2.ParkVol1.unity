@@ -161,6 +161,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 249297648673521615, guid: 9e41f80249168bd4cbdd5c4f643daebd, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 920828346225293299, guid: 9e41f80249168bd4cbdd5c4f643daebd, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -319,9 +323,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2558229031049177371, guid: 9e41f80249168bd4cbdd5c4f643daebd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 33563577}
-    - targetCorrespondingSourceObject: {fileID: 2558229031049177371, guid: 9e41f80249168bd4cbdd5c4f643daebd, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 33563576}
   m_SourcePrefab: {fileID: 100100000, guid: 9e41f80249168bd4cbdd5c4f643daebd, type: 3}
 --- !u!1 &33563575 stripped
@@ -351,25 +352,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &33563577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33563575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a89a727a8e4544787b631860dd951e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActive: 0
-  animator: {fileID: 33563581}
---- !u!95 &33563581 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6459805637156630088, guid: 9e41f80249168bd4cbdd5c4f643daebd, type: 3}
-  m_PrefabInstance: {fileID: 33563574}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &70468746 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 36ba65303dabb3540bb819db64a8714f, type: 3}
@@ -7653,7 +7635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOutline: 0
   outline: {fileID: 0}
-  dog: {fileID: 33563577}
+  dog: {fileID: 0}
   bone: {fileID: 70468746}
   text: {fileID: 972499110}
   Sign: {fileID: 1648326467}
@@ -7796,7 +7778,7 @@ GameObject:
   - component: {fileID: 1248466344}
   m_Layer: 6
   m_Name: Park
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
