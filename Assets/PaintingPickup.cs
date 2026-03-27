@@ -9,42 +9,64 @@ public class PaintingPickup : MonoBehaviour
     public int paintingId;
     PaintingScript painting;
     FrameScript frame;
-    bool isHoldingPainting = false;
+    public bool isHoldingPainting = false;
+    Vector3 scale;
+    Vector3 start;
+    Vector3 dir;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)){
-            Vector3 start = cm.transform.position;
-            Vector3 dir = cm.transform.forward;
+        if (Input.GetKeyDown(KeyCode.Mouse0)){
+            start = cm.transform.position;
+            dir = cm.transform.forward;
             if(Physics.Raycast(start, dir, out RaycastHit hit, 2f)){
-                if(hit.collider.CompareTag("Painting")&&!isHoldingPainting){
-                    painting = hit.collider.GetComponent<PaintingScript>();
-                    isHoldingPainting = true;
-                    paintingId = painting.paintingId;
-                    Debug.Log("Picked up painting: " + painting.paintingId);
-                    painting.transform.SetParent(cm.transform);
-                    painting.transform.localPosition = new Vector3(0, -1f, 1f);
-                    painting.PaintingTrigger();
+                if(!isHoldingPainting){
+                    PickupPainting(hit);
                 }
-                else if(hit.collider.CompareTag("Painting")&&isHoldingPainting){
-                    PaintingScript temp = hit.collider.GetComponent<PaintingScript>();
-
-                    hit.collider.GetComponent<PaintingScript>().paintingId = paintingId;
-                    paintingId = painting.paintingId;
-                    isHoldingPainting = false;
-                    Debug.Log("Dropped painting: " + temp.paintingId);
-                    temp.PaintingTrigger();
+                else if(isHoldingPainting){
+                    ReplacePainting(hit);
                 }
 
                 if(isHoldingPainting&&hit.collider.CompareTag("Frame")){
                     frame = hit.collider.GetComponent<FrameScript>();
-                    Debug.Log("Placed painting: " + paintingId + " in frame: " + frame.frameId);
-                    frame.FrameTrigger(GetComponentInChildren<PaintingScript>());
-                    painting.transform.SetParent(frame.transform);
-                    painting.transform.localPosition = new Vector3(0, 0, -1f);
-                    isHoldingPainting = false;
+                    PutPainting(frame, painting);
                 }
             }
         }
+    }
+
+    void PickupPainting(RaycastHit hit){
+        if(hit.collider.CompareTag("Painting"))
+            painting = hit.collider.GetComponent<PaintingScript>();
+            if(painting==null)return;
+            isHoldingPainting = true;
+            paintingId = painting.paintingId;
+            Debug.Log("Picked up painting: " + painting.paintingId);
+            painting.transform.SetParent(cm.transform);
+            painting.transform.localPosition = new Vector3(0, -1f, 1f);
+            painting.PaintingTrigger();
+            scale = painting.transform.localScale;
+    }
+
+    void ReplacePainting(RaycastHit hit){
+        PaintingScript temp = hit.collider.GetComponent<PaintingScript>();
+        if(temp==null)return;
+        FrameScript tempFrame = temp.GetComponentInParent<FrameScript>();
+        temp.transform.SetParent(cm.transform);
+        temp.transform.localPosition = new Vector3(0, -1f, 1f);
+
+        PutPainting(tempFrame, painting);
+
+        PickupPainting(hit);
+    }
+
+    void PutPainting(FrameScript frame, PaintingScript painting){
+        Debug.Log("Placed painting: " + paintingId + " in frame: " + frame.frameId);
+        frame.FrameTrigger(GetComponentInChildren<PaintingScript>());
+        painting.transform.SetParent(frame.transform);
+        painting.transform.localPosition = new Vector3(0, 0, -1f);
+        painting.transform.localRotation = painting.GetComponentInParent<FrameScript>().transform.rotation;
+        painting.transform.localScale = scale;
+        isHoldingPainting = false;
     }
 }

@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - StartGame
   - ExitButton
+  - Painting
+  - Frame
   layers:
   - Default
   - TransparentFX
