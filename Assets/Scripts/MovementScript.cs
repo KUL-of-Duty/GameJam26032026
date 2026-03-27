@@ -99,11 +99,13 @@ public class MovementScript : MonoBehaviour
 
     public bool IsGrounded()
     {
-        switch (sphereOrRay)
-        {
-            case SphereCastOrRayCast.RAYCAST: _isGrounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround); break;
-            case SphereCastOrRayCast.SPHERECAST: _isGrounded = Physics.SphereCast(transform.position, 1.2f, Vector3.down, out RaycastHit hitInfo); break;
-        }
+        //switch (sphereOrRay)
+        //{
+        //    case SphereCastOrRayCast.RAYCAST: _isGrounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround); break;
+        //    case SphereCastOrRayCast.SPHERECAST: _isGrounded = Physics.SphereCast(transform.position, 1.2f, Vector3.down, out RaycastHit hitInfo); break;
+        //}
+
+        _isGrounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround) || Physics.SphereCast(transform.position, 1.2f, Vector3.down, out RaycastHit hitInfo);
 
         return _isGrounded;
     }
