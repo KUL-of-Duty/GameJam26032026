@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sceneria/4.ParkVol2_DeathOfSomeone.unity
     guid: 6b434ec87396356f8bce83f062f67578
+  - enabled: 1
+    path: Assets/Scenes/Sceneria/5.CorridorOfSorrow(Nudy).unity
+    guid: 0a6920ae45b4b6610a2af0e503a1b35f
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
