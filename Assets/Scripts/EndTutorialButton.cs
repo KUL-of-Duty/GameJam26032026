@@ -1,7 +1,9 @@
 using Unity.Cinemachine;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class CorridorButton : DetectableItem
+public class EndTutorialButton : DetectableItem
 {
     [SerializeField] SkinnedMeshRenderer levelMesh;
 
@@ -32,23 +34,7 @@ public class CorridorButton : DetectableItem
 
     public override void Interact()
     {
-        Debug.Log("HIDE GATES");
-        ShowCorridors();
-        buttonColor_2.SetActive(true);
-        buttonColor_1.SetActive(false);
-        Vector3 currentEuler = player.transform.eulerAngles;
-        currentEuler.y = playersRotationY;
-        player.transform.eulerAngles = currentEuler;
-        levelMesh.SetBlendShapeWeight(0, 100);
-        levelMesh.SetBlendShapeWeight(1, 100);
-
-        Mesh bakeMesh = new Mesh();
-        levelMesh.BakeMesh(bakeMesh);
-
-        var collider = levelMesh.GetComponent<MeshCollider>();
-        collider.sharedMesh = bakeMesh;
-
-        player.GetComponentInChildren<DubbingPlayer>().PlayFrase("wooow", "Wow! Idê dalej!");
+        SceneManager.LoadScene(1);
     }
 
     private void ShowCorridors()

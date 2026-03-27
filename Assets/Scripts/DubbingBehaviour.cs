@@ -35,7 +35,7 @@ public class DubbingBehaviour : PlayableBehaviour
         }
     }
 
-    private IEnumerator LoadAndPlayAudio(AudioSource source)
+    public IEnumerator LoadAndPlayAudio(AudioSource source)
     {
         string path = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
         if (!path.Contains("://")) path = "file://" + path;

@@ -5,6 +5,9 @@ using System;
 public class MovementScript : MonoBehaviour
 {
     [SerializeField] Animator cameraWalkCycleAnimator;
+    public AudioSource audioSource;
+    public AudioClip walkingAudio;
+    public AudioClip jumpingAudio;
     public CinemachineCamera cm;
     public float mouseSensitivity = 100f;
     private float _yRotation = 0f;
@@ -40,6 +43,23 @@ public class MovementScript : MonoBehaviour
         transform.position += moveDirection * Time.deltaTime * (Sprint() ? _runSpeed * 2 : _runSpeed);
 
         cameraWalkCycleAnimator.SetBool("IsWalking", moveDirection.magnitude > 0);
+        cameraWalkCycleAnimator.speed = Sprint() ? 2 : 1;
+        if (cameraWalkCycleAnimator.GetBool("IsWalking"))
+        {
+            if(!audioSource.isPlaying)
+            {
+                if (Sprint())
+                {
+                    audioSource.pitch = 2;
+                }
+                else
+                {
+                    audioSource.pitch = 1;
+                }
+                audioSource.clip = walkingAudio;
+                    audioSource.Play();
+            }
+        }
     }
 
     void Jump()
