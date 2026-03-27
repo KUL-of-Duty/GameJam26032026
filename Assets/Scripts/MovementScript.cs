@@ -35,6 +35,7 @@ public class MovementScript : MonoBehaviour
     }
     void Update()
     {
+        if (!movementEnabled) return;
         movement();
     }
 
