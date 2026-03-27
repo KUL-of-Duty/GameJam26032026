@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
+<<<<<<< HEAD
   tags: []
+=======
+  tags:
+  - Ground
+  - StartGame
+  - ExitButton
+  - Painting
+  - Frame
+  - NumberPick
+>>>>>>> origin/Olek_1
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c2fae9b5bcb7a674da32e91cd96f9399
+=======
+<<<<<<<< HEAD:Assets/CorrectPaintingsAction.prefab.meta
+guid: 48d7dceca92dba046978892e532671d3
+========
+guid: c2fae9b5bcb7a674da32e91cd96f9399
+>>>>>>>> origin/branch-max:Assets/Prefabs/ChoiceCorridor.prefab.meta
+>>>>>>> origin/Olek_1
 PrefabImporter:
   externalObjects: {}
   userData: 
