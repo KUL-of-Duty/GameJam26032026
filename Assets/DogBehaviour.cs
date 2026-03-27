@@ -41,18 +41,18 @@ public class DogBehaviour : MonoBehaviour
         }
     }
 
-    public void GoToButton(GameObject button)
+    public void GoTowards(Vector3 destination)
     {
-        doingSomething = true;
-
-        agent.destination = button.transform.position;
-    }
-
-    public void TaskDone()
-    {
-        if (doingSomething)
+        if(doingSomething)
         {
             doingSomething = false;
+        } else
+        {
+            doingSomething = true;
+            agent.destination = destination;
         }
+
+
+
     }
 }
