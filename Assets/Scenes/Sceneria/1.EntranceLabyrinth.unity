@@ -1410,6 +1410,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2149609702468178284, guid: 7490cbb65199baa4088ce99296c39769, type: 3}
   m_PrefabInstance: {fileID: 983932371}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1081797222 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8122735331472749069, guid: ac22322c6785dcd4699ce29b03ad43de, type: 3}
+  m_PrefabInstance: {fileID: 1434159385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434159386}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1197904858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,11 +1875,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1434159386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792edb0827f616a40ad0e2fafea5a37a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b84cdbda03ada04995a1cbe008d2080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isOutline: 0
-  outline: {fileID: 0}
+  outline: {fileID: 1081797222}
   levelMesh: {fileID: 1789707510}
   buttonColor_1: {fileID: 1434159388}
   buttonColor_2: {fileID: 1434159387}
@@ -2231,7 +2242,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 179227349409188525, guid: ac22322c6785dcd4699ce29b03ad43de, type: 3}
   m_PrefabInstance: {fileID: 2048212932}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1609950776
+--- !u!114 &1609950777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8122735331472749069, guid: ac22322c6785dcd4699ce29b03ad43de, type: 3}
+  m_PrefabInstance: {fileID: 2048212932}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609950768}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1609950783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2244,7 +2266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOutline: 0
-  outline: {fileID: 0}
+  outline: {fileID: 1609950777}
   levelMesh: {fileID: 1789707510}
   buttonColor_1: {fileID: 1318821691}
   buttonColor_2: {fileID: 1776381669}
@@ -2361,7 +2383,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 179227349409188525, guid: ac22322c6785dcd4699ce29b03ad43de, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1609950776}
+      addedObject: {fileID: 1609950783}
   m_SourcePrefab: {fileID: 100100000, guid: ac22322c6785dcd4699ce29b03ad43de, type: 3}
 --- !u!1 &2048276991
 GameObject:
