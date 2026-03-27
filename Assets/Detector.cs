@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class Detector : MonoBehaviour
 {
     public GameObject detectedItem = null;
-    public float detectionDistance = 10000.0f;
+    public float detectionDistance = 10.0f;
 
     void Update()
     {
