@@ -15,7 +15,7 @@ public class ClockButton : DetectableItem
         if (clock.CheckAnwsers())
         {
             clock.CanBeActivated(false);
-            Doors.SetActive(false);
+            Doors.SetActive(true);
         }
         else
         {

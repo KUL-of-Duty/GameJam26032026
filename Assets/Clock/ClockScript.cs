@@ -40,7 +40,7 @@ public class ClockScript : DetectableItem
 
     void Func()
     {
-              if (ClockActive)
+         if (ClockActive)
         {
             ClockActive = false;
             cm.Priority = 1;
