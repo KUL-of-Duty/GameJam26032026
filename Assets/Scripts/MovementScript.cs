@@ -44,6 +44,8 @@ public class MovementScript : MonoBehaviour
 
         cameraWalkCycleAnimator.SetBool("IsWalking", moveDirection.magnitude > 0);
         cameraWalkCycleAnimator.speed = Sprint() ? 2 : 1;
+
+
         if (cameraWalkCycleAnimator.GetBool("IsWalking"))
         {
             if(!audioSource.isPlaying)

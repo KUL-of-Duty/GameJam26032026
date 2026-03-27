@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7241437681406469232}
+  - {fileID: 4476060925596010996}
   m_Father: {fileID: 2149609702468178284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4188215741200570923
@@ -267,6 +267,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59aac0d97f57cf64c9c15a8ef6f07faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraWalkCycleAnimator: {fileID: 0}
+  audioSource: {fileID: 0}
+  walkingAudio: {fileID: 0}
+  jumpingAudio: {fileID: 0}
   cm: {fileID: 4188215741200570923}
   mouseSensitivity: 100
   _isGrounded: 0
@@ -298,8 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e39067fc14ec2241aa15b61aa82b1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectedItem: {fileID: 0}
   detectionDistance: 10000
+  lastItem: {fileID: 0}
 --- !u!54 &1009899319745967092
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -327,17 +331,49 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!1 &8077875994086013633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4476060925596010996}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4476060925596010996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077875994086013633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7241437681406469232}
+  m_Father: {fileID: 7951571106025550674}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7202513959702823835
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7951571106025550674}
+    m_TransformParent: {fileID: 4476060925596010996}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e7bd39d5ebd92c84ea17c929442678ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.020000458
+      value: -0.019996643
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7bd39d5ebd92c84ea17c929442678ed, type: 3}
       propertyPath: m_LocalPosition.y

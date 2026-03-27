@@ -36,9 +36,9 @@ public class CorridorButton : DetectableItem
         ShowCorridors();
         buttonColor_2.SetActive(true);
         buttonColor_1.SetActive(false);
-        Vector3 currentEuler = player.transform.eulerAngles;
-        currentEuler.y = playersRotationY;
-        player.transform.eulerAngles = currentEuler;
+        //Vector3 currentEuler = player.transform.eulerAngles;
+        //currentEuler.y = playersRotationY;
+        //player.transform.eulerAngles = currentEuler;
         levelMesh.SetBlendShapeWeight(0, 100);
         levelMesh.SetBlendShapeWeight(1, 100);
 
