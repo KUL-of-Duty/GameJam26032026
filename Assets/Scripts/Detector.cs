@@ -8,7 +8,7 @@ public class Detector : MonoBehaviour
     void Update()
     {
         // 1. Interakcja (klikniêcie)
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             PerformInteractionRaycast();
         }

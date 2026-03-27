@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal.Filters;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -46,6 +47,7 @@ public class DogBehaviour : MonoBehaviour
 
     public void GoTowards(Vector3 destination)
     {
+        if (!isActive) return;
         if(doingSomething)
         {
             doingSomething = false;
