@@ -5,8 +5,15 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+<<<<<<< HEAD
   - Dog
   - Enemy
+=======
+  - StartGame
+  - ExitButton
+  - Painting
+  - Frame
+>>>>>>> origin/Olek_1
   layers:
   - Default
   - TransparentFX
