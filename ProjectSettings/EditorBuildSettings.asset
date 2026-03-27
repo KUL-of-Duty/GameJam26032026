@@ -26,5 +26,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sceneria/7.ParkVol3BnW_Glitched.unity
     guid: 94a128c044e33bbb2bbd04d7ac0354a0
+  - enabled: 1
+    path: Assets/Scenes/Sceneria/8.CementaryClockPuzzle.unity
+    guid: 003e493ba7d2e1f6f803fdee7d4a6aed
+  - enabled: 1
+    path: Assets/Scenes/Sceneria/9.EndingOfSorrow.unity
+    guid: df06c8180baa8b8c7958a2bf56ccfb60
+  - enabled: 1
+    path: Assets/Scenes/Sceneria/E nding.unity
+    guid: d20b4d8ce2735824d92b3a2de3b08c75
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
