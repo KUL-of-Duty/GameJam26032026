@@ -34,7 +34,13 @@ public class ClockScript : DetectableItem
     public override void Interact()
     {
         if(!active) return;
-        if (ClockActive)
+        Func();
+  
+    }
+
+    void Func()
+    {
+              if (ClockActive)
         {
             ClockActive = false;
             cm.Priority = 1;
@@ -46,7 +52,6 @@ public class ClockScript : DetectableItem
             player.GetComponent<MovementScript>().EnableMoving(false);
         }
     }
-
     private void Update()
     {
         if (!ClockActive) return;
@@ -101,6 +106,10 @@ public class ClockScript : DetectableItem
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             GetNextHand(true);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Func();
         }
 
     }
