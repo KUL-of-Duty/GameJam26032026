@@ -12,12 +12,14 @@ public class MovementScript : MonoBehaviour
     private Vector3 _velocity = Vector3.zero;
     public float _gravityForce = -9.8f;
     public float _runSpeed = 3.5f;
+    bool movementEnabled = true;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
     {
+        if (!movementEnabled) return;
         movement();
     }
 
@@ -36,7 +38,6 @@ public class MovementScript : MonoBehaviour
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector3 moveDirection = cm.transform.forward * move.y + cm.transform.right * move.x;
         moveDirection.y = 0; // Zapobiega poruszaniu siê w górê lub w dó³
-        Debug.Log(moveDirection);
         transform.position += moveDirection * Time.deltaTime * (Sprint() ? _runSpeed * 2 : _runSpeed);
     }
 
@@ -49,7 +50,6 @@ public class MovementScript : MonoBehaviour
             _velocity.y = Mathf.Sqrt(2f * (-_gravityForce));
             GetComponent<Rigidbody>().AddForce(_velocity, ForceMode.VelocityChange);
             //transform.position += _velocity ;
-            Debug.Log(_velocity);
         }
     }
 
@@ -65,6 +65,11 @@ public class MovementScript : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void EnableMoving(bool value)
+    {
+        movementEnabled = value;
     }
 
 

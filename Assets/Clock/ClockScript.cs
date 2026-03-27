@@ -1,6 +1,7 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
-public class ClockScript : MonoBehaviour
+public class ClockScript : DetectableItem
 {
     [SerializeField]
     GameObject hours;
@@ -9,6 +10,7 @@ public class ClockScript : MonoBehaviour
     [SerializeField]
     GameObject seconds;
     Vector3 temp;
+    GameObject player;
 
     [SerializeField]
     int hoursInt = 180;
@@ -19,6 +21,31 @@ public class ClockScript : MonoBehaviour
 
     int currentClockHand = 0;
     public bool ClockActive = false;
+
+    [SerializeField]
+    CinemachineCamera cm;
+
+    bool active = true;
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
+
+    public override void Interact()
+    {
+        if(!active) return;
+        if (ClockActive)
+        {
+            ClockActive = false;
+            cm.Priority = 1;
+            player.GetComponent<MovementScript>().EnableMoving(true);
+        } else
+        {
+            ClockActive = true;
+            cm.Priority = 5;
+            player.GetComponent<MovementScript>().EnableMoving(false);
+        }
+    }
 
     private void Update()
     {
@@ -93,7 +120,16 @@ public class ClockScript : MonoBehaviour
 
     public bool CheckAnwsers()
     {
-        if (hours.transform.rotation.z == hoursInt && minutes.transform.rotation.z == minutesInt && seconds.transform.rotation.z == secondsInt) return true;
+        float hoursLocal = hours.transform.eulerAngles.z;
+        float minutesLocal = minutes.transform.eulerAngles.z;
+        float secondsLocal = seconds.transform.eulerAngles.z;
+
+        if ((Mathf.Abs(hoursLocal - hoursInt) <= 14 && Mathf.Abs(minutesLocal - minutesInt) <= 14) && (Mathf.Abs(secondsLocal) <= 14 || Mathf.Abs(secondsLocal - 360) <= 14)) return true;
         return false;
+    }
+
+    public void CanBeActivated(bool value)
+    {
+        active = value;
     }
 }
