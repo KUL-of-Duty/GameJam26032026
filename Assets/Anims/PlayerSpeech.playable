@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: DubbingClip
   m_EditorClassIdentifier: 
   fileName: tutorialwlabirynciejakietoklasyczne
-  dubbingText: tutorial w labiryncie jakie to klasyczne...
+  dubbingText: "O jaki \u0142adny park, o kurwaa pieees!!!"
 --- !u!114 &-3654687736491758477
 MonoBehaviour:
   m_ObjectHideFlags: 1

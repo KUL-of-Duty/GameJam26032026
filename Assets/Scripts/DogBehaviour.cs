@@ -10,6 +10,7 @@ public class DogBehaviour : MonoBehaviour
     private bool doingSomething = false;
     private GameObject dogsSpot;
     private GameObject dogsSpot2;
+    [SerializeField] Animator animator;
 
     private void Awake()
     {
@@ -25,6 +26,8 @@ public class DogBehaviour : MonoBehaviour
 
     void Update()
     {
+        animator.SetBool("IsWalking", agent.velocity.magnitude > 0.1f);
+
         if (player != null)
         {
             if (!isActive || doingSomething) return;

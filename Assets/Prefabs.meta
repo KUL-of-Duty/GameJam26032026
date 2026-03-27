@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 9d530e628402863488c3b8b64d281168
+=======
+guid: 4fd388dd0d73f224b82bb0ce84be3a5f
+>>>>>>> origin/branch-max
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
