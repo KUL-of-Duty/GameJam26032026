@@ -9,6 +9,7 @@ TagManager:
   - ExitButton
   - Painting
   - Frame
+  - NumberPick
   layers:
   - Default
   - TransparentFX
