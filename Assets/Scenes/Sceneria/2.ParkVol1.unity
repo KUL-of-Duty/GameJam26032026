@@ -9834,6 +9834,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PressurePlateDOG
       objectReference: {fileID: 0}
+    - target: {fileID: 5788110299174167747, guid: 6f858717d51cd3641a20de187863d98b, type: 3}
+      propertyPath: sceneint
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975876508536902351, guid: 6f858717d51cd3641a20de187863d98b, type: 3}
+      propertyPath: value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

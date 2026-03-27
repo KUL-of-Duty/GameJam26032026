@@ -4,13 +4,14 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour
 {
     public Canvas menuCanvas;
+    [SerializeField]
+    int sceneNumber;
     public void ExitGame(){
         Application.Quit();
         Debug.Log("Exit Button Pressed");
     }
-    public string sceneName;
     public void StartGame(){
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneNumber);
         Debug.Log("Start Button Pressed");
     }
 

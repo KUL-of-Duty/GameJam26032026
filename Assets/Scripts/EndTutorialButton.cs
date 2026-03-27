@@ -33,8 +33,8 @@ public class EndTutorialButton : DetectableItem
 
     public override void Interact()
     {
-        SceneManager.LoadScene(1);
-    }
+        SceneManager.LoadScene(2);
+    } 
 
     private void ShowCorridors()
     {

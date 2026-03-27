@@ -10,6 +10,8 @@ public class PressurePlates : MonoBehaviour
     GameObject Dog;
     [SerializeField]
     GameObject Door;
+    [SerializeField]
+    bool value = false;
 
     bool DogPressure = false;
 
@@ -19,6 +21,6 @@ public class PressurePlates : MonoBehaviour
     }
     public void ActivateDoors()
     {
-        Door.SetActive(true);
+        Door.SetActive(value);
     }
 }
