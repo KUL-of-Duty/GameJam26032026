@@ -36,7 +36,7 @@ public class MovementScript : MonoBehaviour
         Vector3 moveDirection = cm.transform.forward * move.y + cm.transform.right * move.x;
         moveDirection.y = 0; // Zapobiega poruszaniu się w górę lub w dół
         Debug.Log(moveDirection);
-        transform.position += moveDirection * Time.deltaTime * (Sprint()?_runSpeed*2:_runSpeed);
+        transform.position += moveDirection.normalized * Time.deltaTime * (Sprint()?_runSpeed*2:_runSpeed);
     }
 
     void Jump(){
