@@ -90,7 +90,13 @@ public class MovementScript : MonoBehaviour
 
     public bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, distanceToGround);
+        _isGrounded = Physics.SphereCast(transform.position, 1.2f, Vector3.down, out RaycastHit hitInfo);
+        return _isGrounded;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 1.2f);
     }
 
     bool Sprint()
