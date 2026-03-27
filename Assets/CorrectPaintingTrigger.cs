@@ -22,7 +22,7 @@ public class CorrectPaintingTrigger : MonoBehaviour
                 return false;
             }
         }
-        meshRenderer.GetComponent<Transform>().transform.localPosition=new Vector3(0, 2, 0);
+        meshRenderer.GetComponent<Transform>().transform.localPosition=new Vector3(0, 20, 0);
         return true;
     }
 }

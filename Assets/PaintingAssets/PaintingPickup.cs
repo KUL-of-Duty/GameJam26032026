@@ -72,6 +72,7 @@ public class PaintingPickup : MonoBehaviour
         painting.transform.localRotation = painting.GetComponentInParent<FrameScript>().transform.rotation;
         //painting.transform.localScale = scale;
         painting.transform.localScale = scale;
+        painting.transform.Rotate(0,0,180);
         isHoldingPainting = false;
     }
 }
