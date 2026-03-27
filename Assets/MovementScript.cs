@@ -36,7 +36,7 @@ public class MovementScript : MonoBehaviour
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector3 moveDirection = cm.transform.forward * move.y + cm.transform.right * move.x;
         moveDirection.y = 0; // Zapobiega poruszaniu si� w g�r� lub w d�
-        Debug.Log(moveDirection);
+        //Debug.Log(moveDirection);
         transform.position += moveDirection * Time.deltaTime * (Sprint() ? _runSpeed * 2 : _runSpeed);
     }
 
