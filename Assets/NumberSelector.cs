@@ -20,6 +20,8 @@ public class NumberSelector : MonoBehaviour
                 }
                 else if(hit.collider.CompareTag("NumberPick")&&GetComponent<MovementScript>().enabled==false){
                     cm.GetComponentInParent<MovementScript>().enabled =true;
+                        cm.transform.localPosition = new Vector3(0, 0.75f, 0);
+                        cm.transform.localRotation = Quaternion.Euler(0, 0, 0);
                     isFreezed = false;
                 }
             }

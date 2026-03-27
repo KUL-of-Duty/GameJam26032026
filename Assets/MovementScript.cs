@@ -56,10 +56,12 @@ public class MovementScript : MonoBehaviour
         else if (IsGrounded()){
             lastGroundCheckTime = Time.time;
         }
+        IsGrounded();
     }
 
     public bool IsGrounded() {
-        return Physics.Raycast(transform.position, Vector3.down, distanceToGround);
+        _isGrounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround);
+        return _isGrounded;
     }
 
     bool Sprint(){

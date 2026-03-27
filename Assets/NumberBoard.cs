@@ -21,7 +21,7 @@ public class NumberBoard : MonoBehaviour
                 return false;
             }
         }
-        Doors.transform.position=new Vector3(0, 0, 2);
+        Doors.transform.position+=new Vector3(0, 0, 2);
         return true;
     }
 }
