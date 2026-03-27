@@ -152,7 +152,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.07, y: 1.852, z: 3.73}
-  m_LocalScale: {x: 0.9080684, y: 0.9080684, z: 0.098216675}
+  m_LocalScale: {x: 1, y: 1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1141070675400663157}
@@ -248,4 +248,3 @@ MonoBehaviour:
   paintingScript: {fileID: 0}
   paintingId: 0
   isRightPlaced: 0
-  correctTrigger: {fileID: 4391549900609640497, guid: 639d7ecb891b62c428509155b872b55b, type: 3}

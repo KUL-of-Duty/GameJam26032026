@@ -13,6 +13,10 @@ public class PaintingPickup : MonoBehaviour
     Vector3 scale;
     Vector3 start;
     Vector3 dir;
+    void Start()
+    {
+        scale = new Vector3(0.8f, 0.8f, 1);
+    }
 
     void Update()
     {
@@ -45,7 +49,7 @@ public class PaintingPickup : MonoBehaviour
             painting.transform.SetParent(cm.transform);
             painting.transform.localPosition = new Vector3(0, -1f, 1f);
             painting.PaintingTrigger();
-            scale = painting.transform.localScale;
+            painting.transform.localScale = new Vector3(1,1,0.1f);
     }
 
     void ReplacePainting(RaycastHit hit){
@@ -66,6 +70,7 @@ public class PaintingPickup : MonoBehaviour
         painting.transform.SetParent(frame.transform);
         painting.transform.localPosition = new Vector3(0, 0, -1f);
         painting.transform.localRotation = painting.GetComponentInParent<FrameScript>().transform.rotation;
+        //painting.transform.localScale = scale;
         painting.transform.localScale = scale;
         isHoldingPainting = false;
     }
