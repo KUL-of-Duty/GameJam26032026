@@ -15,6 +15,8 @@ public class GiveBone : DetectableItem
     GameObject text2;
     [SerializeField]
     GameObject player;
+    [SerializeField]
+    ParticleSystem particle;
 
     [SerializeField]
     string soundName;
@@ -36,6 +38,7 @@ public class GiveBone : DetectableItem
         text.SetActive(true);
         Sign.SetActive(false);
         text2.SetActive(false);
+        particle.Play();
         player.GetComponentInChildren<DubbingPlayer>().PlayFrase(soundName, textSound);
     }
 }
