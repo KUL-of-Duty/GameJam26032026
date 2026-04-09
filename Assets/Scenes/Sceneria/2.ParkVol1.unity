@@ -9786,6 +9786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1) 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5073902384601865174, guid: ad2589b9b153d024eb3f96ad59e7a85c, type: 3}
+      propertyPath: sphereOrRay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
