@@ -1,5 +1,12 @@
 using UnityEngine;
 using Unity.Cinemachine;
+
+/// <summary>
+/// Used on a player to pick a numbers on the number board.
+/// When the player is close enough to the number board and presses E, they can pick a number.
+/// When they are picking a number, they can use the left and right arrow keys to increase or decrease the number.
+/// When they press E again, they will stop picking the number and the camera will return to its original position.
+/// </summary>
 public class NumberSelector : MonoBehaviour
 {
     RaycastHit hit;

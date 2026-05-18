@@ -3,6 +3,13 @@ using NUnit.Framework;
 using Unity.Cinemachine;
 using UnityEngine;
 
+/// <summary>
+/// Used on a player body.
+/// This script allows the player to pick up paintings and place them in frames. 
+/// It uses raycasting to detect when the player clicks on a painting or a frame, 
+/// and then either picks up the painting or places it in the frame. The painting is parented to the camera when held, 
+/// and its position and rotation are adjusted when placed in a frame.
+/// </summary>
 public class PaintingPickup : MonoBehaviour
 {
     public CinemachineCamera cm;
