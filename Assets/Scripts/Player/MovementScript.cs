@@ -1,4 +1,3 @@
-using System;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -13,77 +12,93 @@ public class MovementScript : MonoBehaviour
     public CinemachineCamera cm;
     public float mouseSensitivity = 100f;
     private float _yRotation = 0f;
-    public bool _isGrounded = false;
-    float distanceToGround = 1.2f;
-    private Vector3 _velocity = Vector3.zero;
-    public float _gravityForce = -9.8f;
+
+    public float _gravityForce = -20f;
     public float _runSpeed = 3.5f;
+    public float jumpHeight = 2.5f;
+
     bool movementEnabled = true;
-    float lastGroundCheckTime = 0f;
+
+    float lastGroundedTime = 0f;
+    float lastJumpTime = 0f;
     float jumpInterval = 0.2f;
 
-    // Small sphere radius for ground check — much smaller than before
     [SerializeField] float groundCheckRadius = 0.3f;
-    // Offset downward from pivot to where the feet are
     [SerializeField] float groundCheckOffset = 1.0f;
-    // Which layers count as ground
-    [SerializeField] LayerMask groundMask = ~0;
 
-    public enum SphereCastOrRayCast
-    {
-        SPHERECAST, RAYCAST
-    }
-
-    public SphereCastOrRayCast sphereOrRay;
+    private Vector3 _velocity;
+    private CharacterController _cc;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        _cc = GetComponent<CharacterController>();
     }
 
     void Update()
     {
         if (!movementEnabled) return;
-        movement();
-        IsGrounded();
+        Movement();
     }
 
-    void movement()
+    void Movement()
     {
+        bool grounded = IsGrounded();
+
+        // Reset downward velocity when grounded
+        if (grounded && _velocity.y < 0)
+            _velocity.y = -2f;
+
+        // Coyote time + jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Jump();
+            bool withinCoyoteTime = Time.time - lastGroundedTime <= jumpInterval;
+            bool cooldownPassed = Time.time - lastJumpTime > jumpInterval;
+
+            if ((grounded || withinCoyoteTime) && cooldownPassed)
+            {
+                _velocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityForce);
+                lastJumpTime = Time.time;
+                lastGroundedTime = -10f; // consume coyote time
+                audioSource.PlayOneShot(jumpingAudio);
+            }
         }
 
+        // Mouse look
         float x = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float y = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
         _yRotation -= y;
         _yRotation = Mathf.Clamp(_yRotation, -60, 50);
-
         cm.transform.localRotation = Quaternion.Euler(_yRotation, 0f, 0f);
         transform.Rotate(Vector3.up * x);
 
-        Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Vector3 moveDirection = cm.transform.forward * move.y + cm.transform.right * move.x;
+        // Horizontal movement
+        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector3 moveDirection = cm.transform.forward * input.y + cm.transform.right * input.x;
         moveDirection.y = 0;
-        transform.position += moveDirection.normalized * Time.deltaTime * (Sprint() ? _runSpeed * 2 : _runSpeed);
+        float speed = Sprint() ? _runSpeed * 2f : _runSpeed;
+        _cc.Move(moveDirection.normalized * speed * Time.deltaTime);
 
-        cameraWalkCycleAnimator.SetBool("IsWalking", moveDirection.magnitude > 0);
-        cameraWalkCycleAnimator.speed = Sprint() ? 2 : 1;
+        // Gravity
+        _velocity.y += _gravityForce * Time.deltaTime;
+        _cc.Move(_velocity * Time.deltaTime);
 
-        if (cameraWalkCycleAnimator.GetBool("IsWalking"))
+        // Animations & audio
+        bool isMoving = moveDirection.magnitude > 0 && grounded;
+        cameraWalkCycleAnimator.SetBool("IsWalking", isMoving);
+        cameraWalkCycleAnimator.speed = Sprint() ? 2f : 1f;
+
+        if (isMoving && !audioSource.isPlaying)
         {
-            if (!audioSource.isPlaying)
-            {
-                audioSource.pitch = Sprint() ? 2 : 1;
-                audioSource.clip = walkingAudio;
-                audioSource.Play();
-            }
+            audioSource.pitch = Sprint() ? 2f : 1f;
+            audioSource.clip = walkingAudio;
+            audioSource.Play();
+        }
+        else if (!isMoving)
+        {
+            audioSource.Stop();
         }
     }
-
-    float lastGroundedTime = 0f;
 
     public bool IsGrounded()
     {
@@ -94,46 +109,23 @@ public class MovementScript : MonoBehaviour
         {
             if (hit.gameObject != gameObject && hit.CompareTag("Ground"))
             {
-                _isGrounded = true;
-                lastGroundedTime = Time.time; // refresh while on ground
+                lastGroundedTime = Time.time;
                 return true;
             }
         }
 
-        _isGrounded = false;
         return false;
-    }
-
-    void Jump()
-    {
-        bool withinCoyoteTime = Time.time - lastGroundedTime <= jumpInterval;
-
-        if (!IsGrounded() && !withinCoyoteTime) return;
-
-        if (Time.time - lastGroundCheckTime > jumpInterval)
-        {
-            _velocity.y = Mathf.Sqrt(2.5f * -_gravityForce);
-            GetComponent<Rigidbody>().AddForce(_velocity, ForceMode.VelocityChange);
-            Debug.Log(_velocity);
-            lastGroundCheckTime = Time.time;
-            lastGroundedTime = -jumpInterval; // consume coyote time so you cant jump twice
-        }
     }
 
     private void OnDrawGizmos()
     {
-        // Visualize the actual ground check sphere
         Gizmos.color = IsGrounded() ? Color.green : Color.red;
         Gizmos.DrawWireSphere(transform.position + Vector3.down * groundCheckOffset, groundCheckRadius);
     }
 
     bool Sprint()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && IsGrounded())
-        {
-            return true;
-        }
-        return false;
+        return Input.GetKey(KeyCode.LeftShift) && IsGrounded();
     }
 
     public void EnableMoving(bool value)

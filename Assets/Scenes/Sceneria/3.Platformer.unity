@@ -3929,7 +3929,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5000001
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.51
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -11216,11 +11216,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1) 1 (1) Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 5073902384601865174, guid: ad2589b9b153d024eb3f96ad59e7a85c, type: 3}
-      propertyPath: _isGrounded
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1694425086292798881, guid: ad2589b9b153d024eb3f96ad59e7a85c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
