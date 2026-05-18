@@ -20,7 +20,14 @@ public class MovementScript : MonoBehaviour
     public float _runSpeed = 3.5f;
     bool movementEnabled = true;
     float lastGroundCheckTime = 0f;
-    float jumpInterval = 0.2f; // Czêstotliwoœæ
+    float jumpInterval = 0.2f;
+
+    // Small sphere radius for ground check â€” much smaller than before
+    [SerializeField] float groundCheckRadius = 0.3f;
+    // Offset downward from pivot to where the feet are
+    [SerializeField] float groundCheckOffset = 1.0f;
+    // Which layers count as ground
+    [SerializeField] LayerMask groundMask = ~0;
 
     public enum SphereCastOrRayCast
     {
@@ -33,10 +40,12 @@ public class MovementScript : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
+
     void Update()
     {
         if (!movementEnabled) return;
         movement();
+        IsGrounded();
     }
 
     void movement()
@@ -45,7 +54,7 @@ public class MovementScript : MonoBehaviour
         {
             Jump();
         }
-        Sprint();
+
         float x = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float y = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -54,65 +63,68 @@ public class MovementScript : MonoBehaviour
 
         cm.transform.localRotation = Quaternion.Euler(_yRotation, 0f, 0f);
         transform.Rotate(Vector3.up * x);
+
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector3 moveDirection = cm.transform.forward * move.y + cm.transform.right * move.x;
-        moveDirection.y = 0; // Zapobiega poruszaniu siê w górê lub w dó³
+        moveDirection.y = 0;
         transform.position += moveDirection.normalized * Time.deltaTime * (Sprint() ? _runSpeed * 2 : _runSpeed);
 
         cameraWalkCycleAnimator.SetBool("IsWalking", moveDirection.magnitude > 0);
         cameraWalkCycleAnimator.speed = Sprint() ? 2 : 1;
 
-
         if (cameraWalkCycleAnimator.GetBool("IsWalking"))
         {
             if (!audioSource.isPlaying)
             {
-                if (Sprint())
-                {
-                    audioSource.pitch = 2;
-                }
-                else
-                {
-                    audioSource.pitch = 1;
-                }
+                audioSource.pitch = Sprint() ? 2 : 1;
                 audioSource.clip = walkingAudio;
                 audioSource.Play();
             }
         }
     }
-    void Jump()
-    {
 
-        if (IsGrounded() && Time.time - lastGroundCheckTime > jumpInterval)
-        {
-            _velocity.y = Mathf.Sqrt(2.5f * (-_gravityForce));
-            GetComponent<Rigidbody>().AddForce(_velocity, ForceMode.VelocityChange);
-            //transform.position += _velocity ;
-            Debug.Log(_velocity);
-            lastGroundCheckTime = Time.time;
-        }
-        else if (IsGrounded())
-        {
-            lastGroundCheckTime = Time.time;
-        }
-    }
+    float lastGroundedTime = 0f;
 
     public bool IsGrounded()
     {
-        //switch (sphereOrRay)
-        //{
-        //    case SphereCastOrRayCast.RAYCAST: _isGrounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround); break;
-        //    case SphereCastOrRayCast.SPHERECAST: _isGrounded = Physics.SphereCast(transform.position, 1.2f, Vector3.down, out RaycastHit hitInfo); break;
-        //}
+        Vector3 checkOrigin = transform.position + Vector3.down * groundCheckOffset;
+        Collider[] hits = Physics.OverlapSphere(checkOrigin, groundCheckRadius);
 
-        _isGrounded = Physics.Raycast(transform.position, Vector3.down, distanceToGround) || Physics.SphereCast(transform.position, 1.2f, Vector3.down, out RaycastHit hitInfo);
+        foreach (Collider hit in hits)
+        {
+            if (hit.gameObject != gameObject && hit.CompareTag("Ground"))
+            {
+                _isGrounded = true;
+                lastGroundedTime = Time.time; // refresh while on ground
+                return true;
+            }
+        }
 
-        return _isGrounded;
+        _isGrounded = false;
+        return false;
+    }
+
+    void Jump()
+    {
+        bool withinCoyoteTime = Time.time - lastGroundedTime <= jumpInterval;
+
+        if (!IsGrounded() && !withinCoyoteTime) return;
+
+        if (Time.time - lastGroundCheckTime > jumpInterval)
+        {
+            _velocity.y = Mathf.Sqrt(2.5f * -_gravityForce);
+            GetComponent<Rigidbody>().AddForce(_velocity, ForceMode.VelocityChange);
+            Debug.Log(_velocity);
+            lastGroundCheckTime = Time.time;
+            lastGroundedTime = -jumpInterval; // consume coyote time so you cant jump twice
+        }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, 1.2f);
+        // Visualize the actual ground check sphere
+        Gizmos.color = IsGrounded() ? Color.green : Color.red;
+        Gizmos.DrawWireSphere(transform.position + Vector3.down * groundCheckOffset, groundCheckRadius);
     }
 
     bool Sprint()
@@ -123,9 +135,9 @@ public class MovementScript : MonoBehaviour
         }
         return false;
     }
+
     public void EnableMoving(bool value)
     {
         movementEnabled = value;
     }
-
 }
