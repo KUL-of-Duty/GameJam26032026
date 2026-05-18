@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
+    [SerializeField]
+        float duration = 0.1f;
+    [SerializeField]
+        float magnitude = 0.1f;
+
     public void Shake()
     {
         StartCoroutine("ShakeObject");
     }
     IEnumerator ShakeObject()
     {
-        float duration = 0.3f;
-        float magnitude = 0.1f;
         Vector3 originalPos = transform.localPosition;
         float elapsed = 0f;
 
