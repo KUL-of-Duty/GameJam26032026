@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,6 +15,8 @@ public class Enemy : MonoBehaviour
     ParticleSystem[] particles;
 
     bool isStunned = false;
+
+    bool giveParticles = true;
 
     enum state
     {
@@ -48,7 +49,6 @@ public class Enemy : MonoBehaviour
 
         GetCurrentState();
         ChangeState();
-        Debug.Log(curState);
     }
 
     private void ChangeState()
@@ -116,6 +116,22 @@ public class Enemy : MonoBehaviour
         foreach (var particle in particles)
         {
             particle.Play();
+        }
+    }
+
+    public void OnParticleCollision(GameObject other)
+    {
+
+        if (hp < 0) return;
+
+                hp -= 3;
+
+
+        if(giveParticles){
+            giveParticles = !giveParticles;
+            particles[0].Play();
+        } else {
+            giveParticles = !giveParticles;
         }
     }
 }

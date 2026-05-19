@@ -22,6 +22,8 @@ public class ShootingScript : MonoBehaviour
     bool gunEnabled = false;
     bool gunVisible = false;
 
+    [SerializeField]
+    AudioSource audio;
     void Start()
     {
         if(GunEnabledInScene) Pickup();
@@ -37,6 +39,7 @@ public class ShootingScript : MonoBehaviour
                 particle.Play();
             }
             anim.SetBool("Shoot", true);  
+            audio.Play();
         }
 
         if (Input.GetKey(KeyCode.Mouse0))
@@ -50,6 +53,7 @@ public class ShootingScript : MonoBehaviour
                 particle.Stop();
             }
             anim.SetBool("Shoot", false);  
+            audio.Stop();
         }
     }
 
