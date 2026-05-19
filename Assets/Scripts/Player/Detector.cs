@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Detector : MonoBehaviour
 {
-    public float detectionDistance = 10.0f; // 10000 to bardzo du¿o, 100 zazwyczaj wystarcza
-    public DetectableItem lastItem = null; // Pamiêæ podrêczna ostatniego obiektu
+    public float detectionDistance = 10.0f; // 10000 to bardzo duï¿½o, 100 zazwyczaj wystarcza
+    public DetectableItem lastItem = null; // Pamiï¿½ï¿½ podrï¿½czna ostatniego obiektu
+    [SerializeField]
+    GameObject initRaycast;
 
     void Update()
     {
-        // 1. Interakcja (klikniêcie)
+        // 1. Interakcja (klikniï¿½cie)
         if (Input.GetKeyDown(KeyCode.E))
         {
             PerformInteractionRaycast();
@@ -20,9 +22,9 @@ public class Detector : MonoBehaviour
     private void PerformInteractionRaycast()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, detectionDistance))
+        if (Physics.Raycast(initRaycast.transform.position, initRaycast.transform.TransformDirection(Vector3.forward), out hit, detectionDistance))
         {
-            // GetComponentInParent jest bezpieczniejsze, jeœli collider jest na dziecku obiektu
+            // GetComponentInParent jest bezpieczniejsze, jeï¿½li collider jest na dziecku obiektu
             DetectableItem item = hit.collider.GetComponentInParent<DetectableItem>();
             if (item != null)
             {
@@ -34,33 +36,33 @@ public class Detector : MonoBehaviour
     private void PerformHoverLogic()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, detectionDistance))
+        if (Physics.Raycast(initRaycast.transform.position, initRaycast.transform.forward, out hit, detectionDistance))
         {
             DetectableItem currentItem = hit.collider.GetComponentInParent<DetectableItem>();
 
             // Sprawdzamy, czy patrzymy na przedmiot z DetectableItem
             if (currentItem != null)
             {
-                // JEŒLI TO NOWY PRZEDMIOT (w³aœnie na niego najechaliœmy)
+                // JEï¿½LI TO NOWY PRZEDMIOT (wï¿½aï¿½nie na niego najechaliï¿½my)
                 if (currentItem != lastItem)
                 {
-                    print("Patrzysz na obiekt: " + currentItem.name); // <--- TWÓJ PRINT
+                    print("Patrzysz na obiekt: " + currentItem.name); // <--- TWï¿½J PRINT
 
-                    if (lastItem != null) lastItem.HideOutline(); // Wy³¹cz stary (jeœli by³)
-                    currentItem.DrawOutline(); // W³¹cz nowy
+                    if (lastItem != null) lastItem.HideOutline(); // Wyï¿½ï¿½cz stary (jeï¿½li byï¿½)
+                    currentItem.DrawOutline(); // Wï¿½ï¿½cz nowy
 
-                    lastItem = currentItem; // Zapamiêtaj obecny przedmiot
+                    lastItem = currentItem; // Zapamiï¿½taj obecny przedmiot
                 }
             }
             else
             {
-                // Trafiliœmy w coœ innego (np. œcianê) - wyczyœæ pamiêæ
+                // Trafiliï¿½my w coï¿½ innego (np. ï¿½cianï¿½) - wyczyï¿½ï¿½ pamiï¿½ï¿½
                 ClearLastItem();
             }
         }
         else
         {
-            // Nie trafiamy w nic (patrzymy w niebo) - wyczyœæ pamiêæ
+            // Nie trafiamy w nic (patrzymy w niebo) - wyczyï¿½ï¿½ pamiï¿½ï¿½
             ClearLastItem();
         }
     }
@@ -69,7 +71,7 @@ public class Detector : MonoBehaviour
     {
         if (lastItem != null)
         {
-            print("Przesta³eœ patrzeæ na obiekt.");
+            print("Przestaï¿½eï¿½ patrzeï¿½ na obiekt.");
             lastItem.HideOutline();
             lastItem = null;
         }

@@ -47,7 +47,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Atack();
+            //Atack();
         }
 
         if (Input.GetKeyDown(KeyCode.R))

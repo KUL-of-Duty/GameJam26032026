@@ -21,8 +21,8 @@ TagManager:
   - GetRaycast
   - GunRaycast
   - Enemy
-  - 
-  - 
+  - DontBake
+  - Ignore
   - 
   - 
   - 

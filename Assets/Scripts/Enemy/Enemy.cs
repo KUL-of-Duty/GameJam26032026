@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) < 1.5f)
+        if (Vector3.Distance(player.transform.position, transform.position) < 2f)
         {
             if (!isStunned)
             {
