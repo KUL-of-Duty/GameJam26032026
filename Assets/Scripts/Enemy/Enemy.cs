@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     ParticleSystem[] particles;
 
+    [SerializeField]
+    Animator anim;
+
     bool isStunned = false;
 
     bool giveParticles = true;
@@ -43,9 +46,25 @@ public class Enemy : MonoBehaviour
     {
         if (!activated) return;
 
+        if(anim.GetBool("isMoving"))
+        {
+            if(agent.velocity.magnitude < 0.01f){
+                anim.SetBool("isMoving", false);
+            }
+        } else {
+            if(agent.velocity.magnitude >= 0.01f){
+                anim.SetBool("isMoving", true);
+            }
+        }
+
         if (hp < 0)
         {
             curState = state.Die;
+            anim.SetTrigger("Die");
+            agent.enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            gameObject.transform.position -= Vector3.up;
+            activated = false;
         }
 
         GetCurrentState();
@@ -66,7 +85,6 @@ public class Enemy : MonoBehaviour
                     agent.destination = gameObject.transform.position;
                     break;
                 case Enemy.state.Die:
-                    agent.enabled = false;
                 break;
         }
         }
@@ -78,11 +96,12 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) < 2f)
+        if (Vector3.Distance(player.transform.position, transform.position) < 1.5f)
         {
             if (!isStunned)
             {
                 curState = Enemy.state.Stuned;
+                anim.SetTrigger("Atack");
                 StartCoroutine(StunEnemy());
             }
         }
@@ -128,11 +147,9 @@ public class Enemy : MonoBehaviour
                 hp -= 3;
 
 
-        if(giveParticles){
-            giveParticles = !giveParticles;
-            particles[0].Play();
-        } else {
-            giveParticles = !giveParticles;
+       foreach (var particle in particles)
+        {
+            particle.Play();
         }
     }
 }
