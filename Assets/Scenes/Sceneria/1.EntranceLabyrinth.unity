@@ -128,6 +128,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1658170531205001540, guid: 2ed798fb3c8e8c843bf87dc78106673e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 17.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658170531205001540, guid: 2ed798fb3c8e8c843bf87dc78106673e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.94
       objectReference: {fileID: 0}
@@ -137,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1658170531205001540, guid: 2ed798fb3c8e8c843bf87dc78106673e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17
+      value: 16.35
       objectReference: {fileID: 0}
     - target: {fileID: 1658170531205001540, guid: 2ed798fb3c8e8c843bf87dc78106673e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -165,6 +169,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1658170531205001540, guid: 2ed798fb3c8e8c843bf87dc78106673e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658170531205001540, guid: 2ed798fb3c8e8c843bf87dc78106673e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7642315514352023700, guid: 2ed798fb3c8e8c843bf87dc78106673e, type: 3}
@@ -5050,7 +5058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 179227349409188525, guid: ac22322c6785dcd4699ce29b03ad43de, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 285807103525733720, guid: ac22322c6785dcd4699ce29b03ad43de, type: 3}
       propertyPath: key
@@ -5660,7 +5668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 179227349409188525, guid: ac22322c6785dcd4699ce29b03ad43de, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 285807103525733720, guid: ac22322c6785dcd4699ce29b03ad43de, type: 3}
       propertyPath: key
@@ -5935,7 +5943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &7068197890041137936
 GameObject:
   m_ObjectHideFlags: 0
