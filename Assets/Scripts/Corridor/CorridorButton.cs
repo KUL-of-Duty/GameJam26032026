@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class CorridorButton : DetectableItem
 {
-    [SerializeField] SkinnedMeshRenderer levelMesh;
+    [SerializeField] GameObject DoorsToOpen;
 
     public GameObject buttonColor_1 = null;
     public GameObject buttonColor_2 = null;
 
     public GameObject player;
-    [SerializeField] 
-    GameObject corridors;
+    //[SerializeField] 
+    //GameObject corridors;
     [SerializeField]
     float playersRotationY = 0f;
     [SerializeField]
@@ -39,21 +39,20 @@ public class CorridorButton : DetectableItem
         //Vector3 currentEuler = player.transform.eulerAngles;
         //currentEuler.y = playersRotationY;
         //player.transform.eulerAngles = currentEuler;
-        levelMesh.SetBlendShapeWeight(0, 100);
-        levelMesh.SetBlendShapeWeight(1, 100);
+        DoorsToOpen.SetActive(false);
 
-        Mesh bakeMesh = new Mesh();
-        levelMesh.BakeMesh(bakeMesh);
+       // Mesh bakeMesh = new Mesh();
+        //levelMesh.BakeMesh(bakeMesh);
 
-        var collider = levelMesh.GetComponent<MeshCollider>();
-        collider.sharedMesh = bakeMesh;
+        //var collider = levelMesh.GetComponent<MeshCollider>();
+       // collider.sharedMesh = bakeMesh;
 
-        player.GetComponentInChildren<DubbingPlayer>().PlayFrase("wooow", "Wow! Idê dalej!");
+        //player.GetComponentInChildren<DubbingPlayer>().PlayFrase("wooow", "Wow! Idï¿½ dalej!");
     }
 
     private void ShowCorridors()
     {
-        corridors.SetActive(true);
+       // corridors.SetActive(true);
     }
 
     public string GetNextString ()
