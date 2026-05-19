@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     bool activated;
     NavMeshAgent agent;
+    [SerializeField]
     int hp = 100;
 
     [SerializeField]
