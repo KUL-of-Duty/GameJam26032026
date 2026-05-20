@@ -2276,6 +2276,7 @@ GameObject:
   - component: {fileID: 464489230686292266}
   - component: {fileID: 5542348595914378404}
   - component: {fileID: 5809815104879082323}
+  - component: {fileID: 5809815104879082324}
   m_Layer: 0
   m_Name: portal
   m_TagString: Untagged
@@ -2296,6 +2297,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneint: 5
+--- !u!65 &5809815104879082324
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809815104879082322}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0000002503032, y: 1.4490771, z: 1.732062}
+  m_Center: {x: -0.0000000019963182, y: 6.795353e-10, z: -0.13396926}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
