@@ -13943,7 +13943,6 @@ GameObject:
   - component: {fileID: 5079938909574235890}
   - component: {fileID: 381788308436294014}
   - component: {fileID: 3312214658987763444}
-  - component: {fileID: 2195237046348780335}
   - component: {fileID: 3950928295020304340}
   m_Layer: 0
   m_Name: PlayerWithGun
@@ -14062,7 +14061,7 @@ MonoBehaviour:
   dogSpot: {fileID: 2362688393693046177}
   dogSpot2: {fileID: 5429652136048452926}
   particles: []
-  camShake: {fileID: 2195237046348780335}
+  camShake: {fileID: 0}
   DontIgnore:
     serializedVersion: 2
     m_Bits: 64
@@ -14284,23 +14283,9 @@ MonoBehaviour:
   particles:
   - {fileID: 7717354287502385536}
   - {fileID: 7254271481678048233}
-  camShake: {fileID: 3312214658987763444}
+  camShake: {fileID: 3811793977984782941}
   audio: {fileID: 2420445887056602396}
 --- !u!114 &3312214658987763444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5711628438880524465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 225f462c71eb0d44fbd7452574c3b78f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0.1
-  magnitude: 0.1
---- !u!114 &2195237046348780335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19758,6 +19743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4976135719864485495}
   - component: {fileID: 4231641236171656357}
+  - component: {fileID: 3811793977984782941}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -19824,6 +19810,20 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &3811793977984782941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7982788138285952431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225f462c71eb0d44fbd7452574c3b78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.1
+  magnitude: 0.2
 --- !u!1 &8150786092239664635
 GameObject:
   m_ObjectHideFlags: 0
