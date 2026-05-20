@@ -15,7 +15,7 @@ public class MovementScript : MonoBehaviour
 
     public float _gravityForce = -20f;
     public float _runSpeed = 3.5f;
-    public float jumpHeight = 2.5f;
+    public float jumpHeight = 1.25f;
 
     bool movementEnabled = true;
 
