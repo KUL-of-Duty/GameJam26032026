@@ -13944,6 +13944,7 @@ GameObject:
   - component: {fileID: 381788308436294014}
   - component: {fileID: 3312214658987763444}
   - component: {fileID: 2195237046348780335}
+  - component: {fileID: 3950928295020304340}
   m_Layer: 0
   m_Name: PlayerWithGun
   m_TagString: Player
@@ -14041,10 +14042,11 @@ MonoBehaviour:
   jumpingAudio: {fileID: 0}
   cm: {fileID: 4231641236171656357}
   mouseSensitivity: 500
-  _isGrounded: 0
   _gravityForce: -9.8
   _runSpeed: 3.5
-  sphereOrRay: 0
+  jumpHeight: 2.5
+  groundCheckRadius: 0.3
+  groundCheckOffset: 1
 --- !u!114 &7034218773737890843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14312,6 +14314,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.1
   magnitude: 0.1
+--- !u!143 &3950928295020304340
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5711628438880524465}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.50000024
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5821812940821530303
 GameObject:
   m_ObjectHideFlags: 0

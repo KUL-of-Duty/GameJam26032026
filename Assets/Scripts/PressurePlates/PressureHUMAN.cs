@@ -15,9 +15,9 @@ public class PressureHUMAN : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (Vector3.Distance(otherPressurePlate.transform.position, dog.transform.position) > 3f) return;
+        if (Vector3.Distance(otherPressurePlate.transform.position, dog.transform.position) > 2f && Vector3.Distance(pressure.transform.position, dog.transform.position) > 2f) return;
         pressure.ActivateDoors();
     }
 }
