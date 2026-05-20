@@ -1,6 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Used on a paiting's trigger (doors which have had to be opened) to check if all the paintings are in the correct place.
+/// This script is used to check if all the paintings are in the correct place. 
+/// If they are, it will move the mesh renderer up. 
+/// If not, it will move it back to its original position.
+/// </summary>
 public class CorrectPaintingTrigger : MonoBehaviour
 {
     public List<FrameScript> correctPaintings = new List<FrameScript>();

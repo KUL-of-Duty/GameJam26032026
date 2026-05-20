@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Used on a number pick to increase or decrease the number when the player is picking it.
+/// </summary>
 public class NumberPickScript : MonoBehaviour
 {
     public int currentNumber = 1;

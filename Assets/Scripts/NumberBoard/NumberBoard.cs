@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Used on a number board's trigger (doors which have had to be opened) 
+/// to check if all the numbers are correct.
+/// </summary>
 public class NumberBoard : MonoBehaviour
 {
     [SerializeField]

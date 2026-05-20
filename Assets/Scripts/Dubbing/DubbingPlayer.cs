@@ -37,7 +37,7 @@ public class DubbingPlayer : MonoBehaviour
             }
             else
             {
-                Debug.LogError($"[Timeline Error] Brak pliku: {path} | B³¹d: {www.error}");
+                Debug.Log($"[Timeline Error] Brak pliku: {path} | Bï¿½ï¿½d: {www.error}");
             }
         }
     }
